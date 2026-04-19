@@ -2,9 +2,13 @@ return {
   {
     "saghen/blink.cmp",
     version = "1.*", -- 使用穩定版本
+    event = { "InsertEnter", "CmdlineEnter" },
     dependencies = {
       "rafamadriz/friendly-snippets",
-      "L3MON4D3/LuaSnip"
+      "L3MON4D3/LuaSnip",
+      "supermaven-inc/supermaven-nvim",
+      -- Supermaven 需要這個橋接層
+      "saghen/blink.compat",
     },
     opts = {
       -- 快捷鍵
@@ -22,17 +26,23 @@ return {
       -- 補全來源
       snippets = { preset = 'luasnip' },
       sources = {
-        default = { "snippets", "lsp", "path", "buffer" },
+        default = { "snippets", "lsp", "path", "buffer", "supermaven" },
         -- React Native 開發常用路徑補全
         providers = {
           snippets = {
             name = "Snippets",
-            score_offset = 1000,    -- 暴力提高分值
-            max_items = 8,
-            min_keyword_length = 1, -- 輸入 1 個字就觸發
+            --score_offset = 1000,    -- 暴力提高分值
+            --max_items = 8,
+            --min_keyword_length = 1, -- 輸入 1 個字就觸發
           },
           path = {
             opts = { trailing_slash = true },
+          },
+          supermaven = {
+            name         = "supermaven",
+            module       = "blink.compat.source",
+            score_offset = 100, -- 讓 supermaven 排在最前面
+            async        = true,
           },
         },
       },
@@ -58,8 +68,9 @@ return {
           border = "rounded",
           draw = {
             columns = {
-              { "label",     "label_description", gap = 1 },
-              { "kind_icon", "kind" },
+              { "label",      "label_description", gap = 1 },
+              { "kind_icon",  "kind" },
+              { "source_name" },
             },
           },
         },
@@ -84,7 +95,7 @@ return {
 
       -- LSP 能力（自動注入，不需手動設定 capabilities）
       appearance = {
-        use_nvim_cmp_as_default = true,
+        use_nvim_cmp_as_default = false,
         nerd_font_variant = "mono",
       },
     },
