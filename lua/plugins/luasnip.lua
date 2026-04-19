@@ -1,6 +1,8 @@
 -- ~/.config/nvim/lua/plugins/luasnip.lua
 return {
   "L3MON4D3/LuaSnip",
+  version = "v2.*",
+  event = "InsertEnter",
   dependencies = { "rafamadriz/friendly-snippets" },
   config = function()
     local ls = require("luasnip")
