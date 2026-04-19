@@ -1,103 +1,79 @@
 return {
-  {
-    "saghen/blink.cmp",
-    version = "1.*", -- 使用穩定版本
-    event = { "InsertEnter", "CmdlineEnter" },
-    dependencies = {
-      "rafamadriz/friendly-snippets",
-      "L3MON4D3/LuaSnip",
-      "supermaven-inc/supermaven-nvim",
-      -- Supermaven 需要這個橋接層
-      "saghen/blink.compat",
-    },
-    opts = {
-      -- 快捷鍵
-      keymap = {
-        preset = "default",
-        ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
-        ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
-        ["<CR>"] = { "accept", "fallback" },
-        ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
-        ["<C-e>"] = { "hide" },
-        ["<C-d>"] = { "scroll_documentation_down" },
-        ["<C-u>"] = { "scroll_documentation_up" },
-      },
-
-      -- 補全來源
-      snippets = { preset = 'luasnip' },
-      sources = {
-        default = { "snippets", "lsp", "path", "buffer", "supermaven" },
-        -- React Native 開發常用路徑補全
-        providers = {
-          snippets = {
-            name = "Snippets",
-            --score_offset = 1000,    -- 暴力提高分值
-            --max_items = 8,
-            --min_keyword_length = 1, -- 輸入 1 個字就觸發
-          },
-          path = {
-            opts = { trailing_slash = true },
-          },
-          supermaven = {
-            name         = "supermaven",
-            module       = "blink.compat.source",
-            score_offset = 100, -- 讓 supermaven 排在最前面
-            async        = true,
-          },
-        },
-      },
-      cmdline = {
-        --keymap = { preset = 'inherit' },
-        completion = { menu = { auto_show = true } },
-        --ghost_text = { enabled = true },
-      },
-
-      -- 補全視窗外觀
-      -- 2. 補全選單設定
-      completion = {
-        -- 控制選擇行為
-        list = {
-          selection = {
-            preselect = true,
-            auto_insert = false
-          }
-        },
-
-        -- 補全視窗 UI
-        menu = {
-          border = "rounded",
-          draw = {
-            columns = {
-              { "label",      "label_description", gap = 1 },
-              { "kind_icon",  "kind" },
-              { "source_name" },
-            },
-          },
-        },
-
-        -- 文件預覽視窗
-        documentation = {
-          auto_show = true,
-          auto_show_delay_ms = 400,
-          window = { border = "rounded" },
-        },
-
-        -- 虛擬文字 (類似 Copilot 的灰色預覽)
-        ghost_text = {
-          enabled = true,
-        },
-      },
-
-      -- 模糊比對
-      fuzzy = {
-        frecency = { enabled = true },
-      },
-
-      -- LSP 能力（自動注入，不需手動設定 capabilities）
-      appearance = {
-        use_nvim_cmp_as_default = false,
-        nerd_font_variant = "mono",
-      },
-    },
+  "saghen/blink.cmp",
+  version = "1.*",
+  event = { "InsertEnter", "CmdlineEnter" },
+  dependencies = {
+    "rafamadriz/friendly-snippets",
+    "L3MON4D3/LuaSnip",
+    "supermaven-inc/supermaven-nvim",
+    "saghen/blink.compat",
   },
-}
+  opts = {
+    -- 1. 鍵位設定
+    keymap = {
+      preset = "default",
+      ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
+      ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
+      ["<CR>"] = { "accept", "fallback" },
+      ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
+      ["<C-e>"] = { "hide" },
+      ["<C-d>"] = { "scroll_documentation_down" },
+      ["<C-u>"] = { "scroll_documentation_up" },
+    },
+
+    -- 2. 片段設定
+    snippets = { preset = 'luasnip' },
+
+    -- 3. 補全來源設定 (這裡最常出錯)
+    sources = {
+      default = { "snippets", "lsp", "path", "buffer", "supermaven" },
+      providers = {
+        snippets = {
+          name = "Snippets",
+        },
+        path = {
+          opts = { trailing_slash = true },
+        },
+        supermaven = {
+          name = "Supermaven",
+          module = "blink.compat.source", -- 注意：這裡改用 blink.compat
+          score_offset = 100,
+          async = true,
+        },
+      }, -- 這裡對應 providers 的結束
+    },   -- 這裡對應 sources 的結束
+
+    -- 4. 命令列設定
+    cmdline = {
+      completion = { menu = { auto_show = true } },
+    },
+
+    -- 5. 補全外觀與行為
+    completion = {
+      list = {
+        selection = {
+          preselect = true,
+          auto_insert = false
+        }
+      },
+      menu = {
+        border = "rounded",
+        draw = {
+          columns = {
+            { "label",      "label_description", gap = 1 },
+            { "kind_icon",  "kind" },
+            { "source_name" },
+          },
+        },
+      },
+      documentation = {
+        auto_show = true,
+        auto_show_delay_ms = 400,
+        window = { border = "rounded" },
+      },
+      ghost_text = {
+        enabled = true,
+      },
+    },
+  }, -- 這裡對應 opts 的結束
+}    -- 這裡對應 return 的結束
