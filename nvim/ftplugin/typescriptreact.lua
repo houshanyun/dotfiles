@@ -32,7 +32,6 @@ vim.keymap.set('n', '<leader>tw', '<cmd>TailwindConcealToggle<cr>',
 vim.api.nvim_create_autocmd("BufWritePre", {
   buffer = 0,
   callback = function()
-    -- 這裡呼叫你已經裝好的 conform.lua
     require("conform").format({ bufnr = 0, lsp_fallback = true })
   end,
 })

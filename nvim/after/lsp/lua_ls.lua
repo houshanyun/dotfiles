@@ -20,4 +20,6 @@ return {
       },
     },
   },
+  print("LOADED lua_ls config")
+
 }
