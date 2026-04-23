@@ -32,4 +32,5 @@ return {
   indent = {
     enable = true, -- 這行就代替了你的第三個 autocmd
   },
+  { import = "plugins.ai" },
 }
