@@ -5,6 +5,7 @@ require("core.lazy")
 
 vim.cmd [[ colorscheme solarized-osaka ]]
 
+
 local highlight = {
   "RainbowRed",
   "RainbowYellow",
@@ -26,9 +27,19 @@ hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
   vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#98C379" })
   vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#C678DD" })
   vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#56B6C2" })
+  vim.api.nvim_set_hl(0, "MyCustomScope", { fg = "#FFFFFF" })
 end)
 
-require("ibl").setup { indent = { highlight = highlight } }
+
+require("ibl").setup({
+  indent = { highlight = highlight },
+  scope = {
+    enabled = true,
+    highlight = { "MyCustomScope" },
+    show_start = true,
+    show_end = true,
+  },
+})
 
 require("notify").setup({
   background_colour = "#000000"

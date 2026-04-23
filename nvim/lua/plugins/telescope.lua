@@ -8,13 +8,12 @@ return {
   },
   -- 快捷鍵設置
   keys = {
-    { '<leader>ff', '<cmd>Telescope find_files<cr>',                    desc = 'Find Files' },
-    { '<leader>fg', '<cmd>Telescope live_grep<cr>',                     desc = 'Live Grep' },
-    { '<leader>fr', '<cmd>Telescope oldfiles<cr>',                      desc = 'Recent Files' },
-    { '<leader>fb', '<cmd>Telescope buffers<cr>',                       desc = 'Buffers' },
-    { '<leader>fd', '<cmd>Telescope lsp_document_symbols<cr>',          desc = 'Document Symbols' },
-    -- 針對 React Native：快速進入組件夾 (需視你的目錄結構調整)
-    { '<leader>fc', '<cmd>Telescope find_files cwd=src/components<cr>', desc = 'Find Components' },
+    { '<leader>ff', '<cmd>Telescope find_files<cr>',           desc = 'Find Files' },
+    { '<leader>fg', '<cmd>Telescope live_grep<cr>',            desc = 'Live Grep' },
+    { '<leader>fr', '<cmd>Telescope oldfiles<cr>',             desc = 'Recent Files' },
+    { '<leader>fb', '<cmd>Telescope buffers<cr>',              desc = 'Buffers' },
+    { '<leader>fd', '<cmd>Telescope lsp_document_symbols<cr>', desc = 'Document Symbols' },
+    { "<leader>fh", "<cmd>builtin.help_tags<cr>" }
   },
   -- 插件參數配置
   opts = function()
