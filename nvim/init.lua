@@ -4,7 +4,10 @@ require("core.keymaps")
 require("core.lazy")
 
 vim.cmd [[ colorscheme solarized-osaka ]]
-
+vim.api.nvim_set_hl(0, "TelescopeBorder", { fg = "#5f87af" })
+vim.api.nvim_set_hl(0, "TelescopePromptBorder", { fg = "#5f87af" })
+vim.api.nvim_set_hl(0, "TelescopeResultsBorder", { fg = "#5f87af" })
+vim.api.nvim_set_hl(0, "TelescopePreviewBorder", { fg = "#5f87af" })
 
 local highlight = {
   "RainbowRed",
