@@ -9,21 +9,21 @@ return {
   },
   -- 快捷鍵設置
   keys = {
-    { '<leader>ff', '<cmd>Telescope find_files<cr>',                                 desc = 'Find Files' },
-    { '<leader>fg', '<cmd>Telescope live_grep<cr>',                                  desc = 'Live Grep' },
-    { '<leader>fr', '<cmd>Telescope oldfiles<cr>',                                   desc = 'Recent Files' },
-    { '<leader>fb', '<cmd>Telescope buffers<cr>',                                    desc = 'Buffers' },
-    { '<leader>fd', '<cmd>Telescope lsp_document_symbols<cr>',                       desc = 'Document Symbols' },
-    { "<leader>fh", "<cmd>Telescope help_tags<cr>" },
-    { "<leader>e",  "<cmd>Telescope file_browser<cr>",                               desc = "File Browser" },
-    { "<leader>E",  "<cmd>Telescope file_browser path=%:p:h select_buffer=true<cr>", desc = "File Browser (current dir)" },
-    { "gd",         "<cmd>Telescope lsp_definitions<cr>",                            desc = "Goto Definition" },
-    { "gr",         "<cmd>Telescope lsp_references<cr>",                             desc = "References" },
-    { "gi",         "<cmd>Telescope lsp_implementations<cr>",                        desc = "Implementations" },
-    { "gt",         "<cmd>Telescope lsp_type_definitions<cr>",                       desc = "Type Definitions" },
-
-    { "<leader>ws", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",              desc = "Workspace Symbols" },
-    { "<leader>dd", "<cmd>Telescope diagnostics<cr>" }
+    --   { '<leader>ff', '<cmd>Telescope find_files<cr>',                                 desc = 'Find Files' },
+    --   { '<leader>fg', '<cmd>Telescope live_grep<cr>',                                  desc = 'Live Grep' },
+    --   { '<leader>fr', '<cmd>Telescope oldfiles<cr>',                                   desc = 'Recent Files' },
+    --   { '<leader>fb', '<cmd>Telescope buffers<cr>',                                    desc = 'Buffers' },
+    --   { "<leader>fh", "<cmd>Telescope help_tags<cr>" },
+    { "<leader>e", "<cmd>Telescope file_browser<cr>", desc = "File Browser" },
+    --   { "<leader>E",  "<cmd>Telescope file_browser path=%:p:h select_buffer=true<cr>", desc = "File Browser (current dir)" },
+    --   { "gd",         "<cmd>Telescope lsp_definitions<cr>",                            desc = "Goto Definition" },
+    --   { "gr",         "<cmd>Telescope lsp_references<cr>",                             desc = "References" },
+    --   { "gi",         "<cmd>Telescope lsp_implementations<cr>",                        desc = "Implementations" },
+    --   { "gt",         "<cmd>Telescope lsp_type_definitions<cr>",                       desc = "Type Definitions" },
+    --
+    --   { "<leader>ds", "<cmd>Telescope lsp_document_symbols<cr>",                       desc = "Document Symbols" },
+    --   { "<leader>ws", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",              desc = "Workspace Symbols" },
+    --   { "<leader>dd", "<cmd>Telescope diagnostics<cr>" }
   },
   -- 插件參數配置
   -- opts = function()
@@ -147,6 +147,7 @@ return {
     telescope.load_extension("fzf")
     telescope.load_extension("ui-select")
     telescope.load_extension("file_browser")
-    vim.ui.select = require("telescope.themes").get_dropdown({})
+    -- vim.ui.select = require("telescope.themes").get_dropdown({})
+    vim.ui.select = telescope.extensions["ui-select"].select
   end,
 }
