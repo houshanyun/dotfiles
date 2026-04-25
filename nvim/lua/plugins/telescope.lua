@@ -149,5 +149,17 @@ return {
     telescope.load_extension("file_browser")
     -- vim.ui.select = require("telescope.themes").get_dropdown({})
     vim.ui.select = telescope.extensions["ui-select"].select
+    -- Solarized Osaka 配色
+    vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "#1a1a2e" })
+    vim.api.nvim_set_hl(0, "TelescopeBorder", { fg = "#268bd2", bg = "#1a1a2e" })
+    vim.api.nvim_set_hl(0, "TelescopePromptNormal", { bg = "#1f2335" })
+    vim.api.nvim_set_hl(0, "TelescopePromptBorder", { fg = "#2aa198", bg = "#1f2335" })
+    vim.api.nvim_set_hl(0, "TelescopePromptTitle", { fg = "#1a1a2e", bg = "#2aa198", bold = true })
+    vim.api.nvim_set_hl(0, "TelescopeResultsBorder", { fg = "#268bd2", bg = "#1a1a2e" })
+    vim.api.nvim_set_hl(0, "TelescopeResultsTitle", { fg = "#268bd2", bold = true })
+    vim.api.nvim_set_hl(0, "TelescopePreviewBorder", { fg = "#6c71c4", bg = "#1a1a2e" })
+    vim.api.nvim_set_hl(0, "TelescopePreviewTitle", { fg = "#1a1a2e", bg = "#6c71c4", bold = true })
+    vim.api.nvim_set_hl(0, "TelescopeSelection", { bg = "#2d3f76", bold = true })
+    vim.api.nvim_set_hl(0, "TelescopeMatching", { fg = "#e5c07b", bold = true })
   end,
 }

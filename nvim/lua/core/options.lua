@@ -89,3 +89,18 @@ vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()' -- 配合 Treesitter 進行
 -- ================================================================================================
 vim.g.loaded_netrw = 1 -- 禁用內建的 netrw (在使用 nvim-tree 時建議開啟)
 vim.g.loaded_netrwPlugin = 1
+
+
+
+vim.g.clipboard = {
+  name = "win32yank",
+  copy = {
+    ["+"] = "win32yank.exe -i --crlf",
+    ["*"] = "win32yank.exe -i --crlf",
+  },
+  paste = {
+    ["+"] = "win32yank.exe -o --lf",
+    ["*"] = "win32yank.exe -o --lf",
+  },
+  cache_enabled = 0,
+}

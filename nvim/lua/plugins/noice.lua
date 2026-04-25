@@ -19,6 +19,7 @@ return {
       inc_rename = false,           -- enables an input dialog for inc-rename.nvim
       lsp_doc_border = false,       -- add a border to hover docs and signature help
     },
+
   },
   dependencies = {
     -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
@@ -27,5 +28,12 @@ return {
     --   `nvim-notify` is only needed, if you want to use the notification view.
     --   If not available, we use `mini` as the fallback
     "rcarriga/nvim-notify",
-  }
+    config = function(_, opts)
+      require("noice").setup(opts)
+      -- ✅ background_colour 要在这里设定 notify
+      require("notify").setup({
+        background_colour = "#1a1a2e", -- 配合 solarized-osaka
+      })
+    end,
+  },
 }
