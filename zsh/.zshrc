@@ -130,9 +130,7 @@ export OPENAI_API_KEY=""
 # 如果有本地專屬設定，就載入它
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
+# ranger 
+export EDITOR='nvim'
 
-
-
-
-
-
+alias cat='bat'
