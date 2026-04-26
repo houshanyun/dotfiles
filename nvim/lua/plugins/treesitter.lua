@@ -1,36 +1,62 @@
 return {
   'nvim-treesitter/nvim-treesitter',
-  lazy = false, -- 官方明確要求不要 lazy-load
+  lazy = false,
   build = ':TSUpdate',
+
   config = function()
-    -- 新版調用方式
-    require('nvim-treesitter').setup({
-      -- 解析器安裝路徑 (選填，預設會存在 data 目錄)
-      install_dir = vim.fn.stdpath('data') .. '/site'
+    local ts = require('nvim-treesitter')
+
+    ts.setup({
+      install_dir = vim.fn.stdpath('data') .. '/site',
     })
 
-    -- 2. 手動指定要安裝的語言 (針對 React 開發)
-    -- 這會非同步安裝，不會卡住啟動
-    require('nvim-treesitter').install({
-      "tsx",
-      "typescript",
-      "javascript",
-      "html",
-      "css",
-      "json",
-      "yaml",
-      "lua",
-      "vim",
-      "vimdoc",
-      "markdown",
-      "markdown_inline"
+    local ensure = {
+      'tsx',
+      'typescript',
+      'javascript',
+      'html',
+      'css',
+      'json',
+      'yaml',
+      'lua',
+      'vim',
+      'vimdoc',
+      'markdown',
+      'markdown_inline',
+    }
+
+    local installed = ts.get_installed()
+    local missing = vim.tbl_filter(function(lang)
+      return not vim.tbl_contains(installed, lang)
+    end, ensure)
+
+    if #missing > 0 then
+      ts.install(missing)
+    end
+
+    -- ⭐ 改這裡（關鍵）
+    vim.api.nvim_create_autocmd({ 'BufReadPost', 'BufNewFile' }, {
+      callback = function(args)
+        local ft = vim.bo[args.buf].filetype
+
+        local enable_ft = {
+          typescript = true,
+          typescriptreact = true,
+          javascript = true,
+          javascriptreact = true,
+          html = true,
+          css = true,
+          json = true,
+          yaml = true,
+          lua = true,
+          vim = true,
+          markdown = true,
+        }
+
+        if enable_ft[ft] then
+          pcall(vim.treesitter.start, args.buf)
+        end
+      end,
     })
   end,
-  highlight = {
-    enable = true, -- 這行就代替了你的第一個 autocmd
-  },
-  indent = {
-    enable = true, -- 這行就代替了你的第三個 autocmd
-  },
-  --{ import = "plugins.ai" },
 }
