@@ -134,5 +134,5 @@ export OPENAI_API_KEY=""
 
 export EDITOR='nvim'
 
-
+export COLORTERM=truecolor
 
