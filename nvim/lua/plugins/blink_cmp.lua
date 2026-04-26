@@ -5,8 +5,6 @@ return {
   dependencies = {
     "rafamadriz/friendly-snippets",
     "L3MON4D3/LuaSnip",
-    "supermaven-inc/supermaven-nvim",
-    "saghen/blink.compat",
   },
   opts = {
     -- 1. 鍵位設定
@@ -26,19 +24,13 @@ return {
 
     -- 3. 補全來源設定 (這裡最常出錯)
     sources = {
-      default = { "snippets", "lsp", "path", "buffer", "supermaven" },
+      default = { "snippets", "lsp", "path", "buffer" },
       providers = {
         snippets = {
           name = "Snippets",
         },
         path = {
           opts = { trailing_slash = true },
-        },
-        supermaven = {
-          name = "Supermaven",
-          module = "blink.compat.source", -- 注意：這裡改用 blink.compat
-          score_offset = 100,
-          async = true,
         },
       }, -- 這裡對應 providers 的結束
     },   -- 這裡對應 sources 的結束

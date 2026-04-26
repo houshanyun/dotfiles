@@ -114,6 +114,8 @@ eval "$(~/.local/bin/mise activate zsh)"
 # export ADB_SERVER_SOCKET=tcp:$WINDOWS_IP:5037
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
+# bat
+alias cat="bat"
 # 基本取代 ls
 alias ls='eza --icons --group-directories-first'
 
@@ -130,9 +132,7 @@ export OPENAI_API_KEY=""
 # 如果有本地專屬設定，就載入它
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
-
-
-
+export EDITOR='nvim'
 
 
 
