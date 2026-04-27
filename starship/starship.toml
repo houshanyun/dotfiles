@@ -1,0 +1,40 @@
+# ~/.config/starship.toml (在 Windows 下路徑為 C:\Users\YourName\.config\starship.toml)
+
+#format = """
+#$os$directory$git_branch$git_status$nodejs$rust$golang$character
+#"""
+# --- 左側：絕對禪模式 ---
+format = """"""
+
+# --- 右側：隱形儀表板 ---
+# 你可以把想看的資訊（如路徑、Git、耗時）全部塞在這裡
+#right_format = """$directory$git_branch$cmd_duration"""
+right_format = """$os$directory$git_branch$git_status$cmd_duration"""
+
+[directory]
+#disabled = true
+style = "bold #7aa2f7" # 使用 Osaka 的藍色
+truncation_length = 3
+truncate_to_repo = true
+
+[git_branch]
+#disabled = true
+symbol = " "
+style = "bold #bb9af7" # 使用 Osaka 的紫色
+
+[git_status]
+#disabled = true
+style = "bold #f7768e"
+
+[nodejs]
+disabled = true
+symbol = " "
+style = "bold #73daca"
+
+[character]
+# 僅保留一個不可見的空格，確保輸入位置不貼牆
+disabled = true
+success_symbol = "[ ](bold #73daca)" 
+error_symbol = "[ ](bold #f7768e)"
+
+

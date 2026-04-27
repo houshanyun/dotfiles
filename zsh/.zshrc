@@ -8,7 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME=""
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -71,7 +71,7 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git z zsh-completions zsh-autosuggestions zsh-syntax-highlighting web-search)
-
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#5c6f75"
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -135,4 +135,26 @@ export OPENAI_API_KEY=""
 export EDITOR='nvim'
 
 export COLORTERM=truecolor
+export TERM=xterm-256color
 
+# 指向 Windows 提供的驅動路徑
+export LD_LIBRARY_PATH=/usr/lib/wsl/lib:$LD_LIBRARY_PATH
+# 讓系統優先使用 D3D12 (WSL2 的 GPU 通道)
+export GALLIUM_DRIVER=d3d12
+# 強制 GTK 使用較穩定的渲染器
+export GSK_RENDERER=ngl
+
+# WSL 剪貼簿橋接
+if [ -n "$WAYLAND_DISPLAY" ]; then
+    alias pbcopy='wl-copy'
+    alias pbpaste='wl-paste'
+fi
+
+# 如果是從 Windows Terminal 進來，自動開啟 Ghostty
+if [ -z "$GHOSTTY_RESOURCES_DIR" ] && [ -n "$WT_SESSION" ]; then
+    exec ghostty
+fi
+
+eval "$(starship init zsh)"
+# 如果未來想徹底不使用 Starship，可改用此行：
+# PROMPT='%f '

@@ -17,17 +17,21 @@ return {
         variables = {},
       },
       on_highlights = function(hl, c)
+        hl["@punctuation.bracket"]     = { fg = c.cyan300 }
+        --hl["@punctuation.delimiter"] = { fg = c.blue300 }
+        hl["@punctuation.bracket.tsx"] = { fg = c.base1 }
         -- ==========================================
         -- Noice.nvim -
         -- ==========================================
-        local bg                         = "#0a0e14"
+        local bg                       = "#0a0e14"
 
-        hl.NoiceCmdlinePopup             = { bg = bg, fg = "#e6f7ff" }
-        hl.NoiceConfirm                  = { bg = bg }
-        hl.NoiceMini                     = { bg = bg }
+        hl.NoiceCmdlinePopup           = { bg = bg, fg = "#e6f7ff" }
+        hl.NoiceConfirm                = { bg = bg }
+        hl.NoiceMini                   = { bg = bg }
 
-        hl.NormalFloat                   = { bg = bg }
-        hl.FloatBorder                   = { fg = "#00ffd5", bg = bg }
+        hl.NormalFloat                 = { bg = bg }
+        hl.FloatBorder                 = { fg = "#00ffd5", bg = bg }
+
 
         hl.NoiceCmdlinePopupBorder       = { fg = "#00ffd5", bg = "#0b0f1a" }
         hl.NoiceCmdlineIconCmdline       = { fg = "#ff4dff" }
