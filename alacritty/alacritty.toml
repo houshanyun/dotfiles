@@ -4,14 +4,14 @@
 
 # [窗口設定]
 [window]
-padding = { x = 20, y = 10 }
+padding = { x = 30, y = 30 }
 dynamic_padding = true # 保持動態邊距開啟，這樣當你調整視窗大小時，留白會按比例縮放
 opacity = 0.95  # 輕微透明度，增加現代感
 blur = true     # 在支援的環境下開啟背景模糊
 title = "Alacritty"
 class = { instance = "Alacritty", general = "Alacritty" }
 decorations = "none"
-dimensions = { columns = 130, lines = 35 }
+dimensions = { columns = 120, lines = 30 }
 
 # [字體設定]
 [font]
@@ -87,6 +87,9 @@ mods = "Control|Shift"
 action = "Copy"
 key = "C"
 mods = "Control|Shift"
+
+[selection]
+save_to_clipboard = true
 
 # 全螢幕
 [[keyboard.bindings]]

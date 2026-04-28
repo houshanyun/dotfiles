@@ -1,4 +1,6 @@
 [tools]
+fzf = "latest"
 java = "openjdk-21"
 lua = "5.1"
 node = "24"
+zoxide = "latest"

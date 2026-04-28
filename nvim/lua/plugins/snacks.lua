@@ -220,8 +220,9 @@ return {
     terminal  = {
       enabled = true,
       win = {
-        position = "bottom",
-        height   = 0.35,
+        position = "float",
+        width    = 0.9,
+        height   = 0.9,
         border   = "rounded",
         -- solarized-osaka: 深藍底色 + 亮邊框
         wo       = {

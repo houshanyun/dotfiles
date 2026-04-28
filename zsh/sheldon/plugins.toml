@@ -5,3 +5,14 @@ github = "zsh-users/zsh-syntax-highlighting"
 
 [plugins.zsh-autosuggestions]
 github = "zsh-users/zsh-autosuggestions"
+
+# 新增 zoxide 初始化
+[plugins.zoxide]
+inline = 'if command -v zoxide &> /dev/null; then eval "$(zoxide init zsh)"; fi'
+
+# 選擇性建議：如果你有安裝 fzf，這會讓 zoxide 的互動模式更好用
+[plugins.fzf]
+inline = 'if command -v fzf &> /dev/null; then source <(fzf --zsh); fi'
+
+[plugins.starship]
+inline = 'if command -v starship &> /dev/null; then eval "$(starship init zsh)"; fi'

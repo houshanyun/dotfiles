@@ -70,16 +70,12 @@ ZSH_THEME=""
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git z zsh-completions zsh-autosuggestions zsh-syntax-highlighting web-search)
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#5c6f75"
-source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -102,47 +98,57 @@ export LANG=en_US.UTF-8
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-eval "$(~/.local/bin/mise activate zsh)"
-# 這是根據你提供的原始路徑轉換而來的
-# export ANDROID_HOME="/mnt/c/Users/liker/AppData/Local/Android/Sdk"
-# export PATH="$PATH:$ANDROID_HOME/platform-tools"
-# export PATH="$PATH:$ANDROID_HOME/cmdline-tools/latest/bin"
-# 1. 獲取 Windows 主機的 IP
-# export WINDOWS_IP=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}')
 
-# 2. 讓 ADB 指向這個 IP
-# export ADB_SERVER_SOCKET=tcp:$WINDOWS_IP:5037
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
-# bat
-alias cat="bat"
-# 基本取代 ls
-alias ls='eza --icons --group-directories-first'
 
-# 取代 la (顯示隱藏檔)
-alias la='eza -a --icons --group-directories-first'
 
-# 取代 ll (列表模式，顯示權限、大小、Git 狀態)
-alias ll='eza -lgb --icons --git --group-directories-first'
 
-# 樹狀顯示
-alias lt='eza --tree --icons'
 
 export OPENAI_API_KEY=""
-# 如果有本地專屬設定，就載入它
-[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
+
+
+
+
+
+
+# 1. 環境變數與路徑 (優先設定)
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 export EDITOR='nvim'
-
 export COLORTERM=truecolor
 export TERM=xterm-256color
 
-# 指向 Windows 提供的驅動路徑
+# WSL 相關 GPU 與驅動設定
 export LD_LIBRARY_PATH=/usr/lib/wsl/lib:$LD_LIBRARY_PATH
-# 讓系統優先使用 D3D12 (WSL2 的 GPU 通道)
 export GALLIUM_DRIVER=d3d12
-# 強制 GTK 使用較穩定的渲染器
+
 export GSK_RENDERER=ngl
+
+# 2. 初始化 mise (管理工具的版本)
+eval "$(~/.local/bin/mise activate zsh)"
+
+# 3. 初始化 Oh My Zsh (保留你需要的 git, web-search 等功能)
+export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME="" # 因為你要用 Starship，這裡保持空白
+
+
+# 只保留 OMZ 獨有、且 sheldon 沒管的插件
+plugins=(git web-search zsh-completions) 
+source $ZSH/oh-my-zsh.sh
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#5c6f75"
+
+# 4. 初始化 sheldon (管理 zoxide, 語法高亮, 自動建議)
+eval "$(sheldon source)"
+
+
+
+# 6. Aliases (別名設定)
+alias cat="bat"
+alias ls='eza --icons --group-directories-first'
+alias la='eza -a --icons --group-directories-first'
+alias ll='eza -lgb --icons --git --group-directories-first'
+alias lt='eza --tree --icons'
+
 
 # WSL 剪貼簿橋接
 if [ -n "$WAYLAND_DISPLAY" ]; then
@@ -150,11 +156,10 @@ if [ -n "$WAYLAND_DISPLAY" ]; then
     alias pbpaste='wl-paste'
 fi
 
-# 如果是從 Windows Terminal 進來，自動開啟 Ghostty
+# 7. 其他邏輯 (Ghostty 自動開啟)
 if [ -z "$GHOSTTY_RESOURCES_DIR" ] && [ -n "$WT_SESSION" ]; then
     exec ghostty
 fi
 
-eval "$(starship init zsh)"
-# 如果未來想徹底不使用 Starship，可改用此行：
-# PROMPT='%f '
+# 載入本地私有設定
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local

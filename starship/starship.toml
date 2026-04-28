@@ -1,15 +1,29 @@
 # ~/.config/starship.toml (在 Windows 下路徑為 C:\Users\YourName\.config\starship.toml)
 
-#format = """
-#$os$directory$git_branch$git_status$nodejs$rust$golang$character
-#"""
 # --- 左側：絕對禪模式 ---
 format = """"""
 
 # --- 右側：隱形儀表板 ---
 # 你可以把想看的資訊（如路徑、Git、耗時）全部塞在這裡
 #right_format = """$directory$git_branch$cmd_duration"""
-right_format = """$os$directory$git_branch$git_status$cmd_duration"""
+right_format = """$directory$git_branch$git_status$cmd_duration$status"""
+
+[status]
+disabled = false              # 預設是關閉的，必須手動開啟
+symbol = "✘ "                 # 失敗時顯示的符號
+success_symbol = ""           # 成功時不顯示（預設行為）
+format = "[$symbol$status]($style) "
+style = "bold red"
+map_symbol = true             # 把常見 exit code 轉成易讀符號
+
+[os]
+disabled = true
+
+[time]
+disabled = true
+format = "[$time]($style)"
+time_format = "%H:%M:%S"
+style = "bold dimmed cyan"
 
 [directory]
 #disabled = true
