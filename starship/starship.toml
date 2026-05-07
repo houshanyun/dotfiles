@@ -1,20 +1,20 @@
 # ~/.config/starship.toml (在 Windows 下路徑為 C:\Users\YourName\.config\starship.toml)
 
 # --- 左側：絕對禪模式 ---
-format = """"""
+format = """$character"""
 
 # --- 右側：隱形儀表板 ---
 # 你可以把想看的資訊（如路徑、Git、耗時）全部塞在這裡
 #right_format = """$directory$git_branch$cmd_duration"""
-right_format = """$directory$git_branch$git_status$cmd_duration$status"""
+right_format = """$directory$cmd_duration$status"""
 
 [status]
-disabled = false              # 預設是關閉的，必須手動開啟
-symbol = "✘ "                 # 失敗時顯示的符號
-success_symbol = ""           # 成功時不顯示（預設行為）
+disabled = false                     # 預設是關閉的，必須手動開啟
+symbol = "✘ "                        # 失敗時顯示的符號
+success_symbol = ""                  # 成功時不顯示（預設行為）
 format = "[$symbol$status]($style) "
 style = "bold red"
-map_symbol = true             # 把常見 exit code 轉成易讀符號
+map_symbol = true                    # 把常見 exit code 轉成易讀符號
 
 [os]
 disabled = true
@@ -27,7 +27,7 @@ style = "bold dimmed cyan"
 
 [directory]
 #disabled = true
-style = "bold #7aa2f7" # 使用 Osaka 的藍色
+style = "bold #7aa2f7"  # 使用 Osaka 的藍色
 truncation_length = 3
 truncate_to_repo = true
 
@@ -48,7 +48,5 @@ style = "bold #73daca"
 [character]
 # 僅保留一個不可見的空格，確保輸入位置不貼牆
 disabled = true
-success_symbol = "[ ](bold #73daca)" 
-error_symbol = "[ ](bold #f7768e)"
-
-
+success_symbol = "[󰁕](bold #73daca)"
+error_symbol = "[󰁕](bold #f7768e)"

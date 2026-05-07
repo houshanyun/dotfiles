@@ -1,6 +1,9 @@
 [tools]
+"cargo:tlrc" = "latest"
 fzf = "latest"
 java = "openjdk-21"
 lua = "5.1"
 node = "24"
+rust = "latest"
+yazi = "latest"
 zoxide = "latest"

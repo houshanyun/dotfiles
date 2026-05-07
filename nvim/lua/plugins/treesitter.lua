@@ -2,7 +2,7 @@ return {
   'nvim-treesitter/nvim-treesitter',
   lazy = false,
   build = ':TSUpdate',
-
+  disable = { "toml" }, -- 在這裡禁用 toml 的 TS 高亮
   config = function()
     local ts = require('nvim-treesitter')
 

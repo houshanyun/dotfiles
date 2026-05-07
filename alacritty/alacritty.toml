@@ -4,10 +4,10 @@
 
 # [窗口設定]
 [window]
-padding = { x = 30, y = 30 }
-dynamic_padding = true # 保持動態邊距開啟，這樣當你調整視窗大小時，留白會按比例縮放
-opacity = 0.95  # 輕微透明度，增加現代感
-blur = true     # 在支援的環境下開啟背景模糊
+padding = { x = 30, y = 10 }
+dynamic_padding = true                                    # 保持動態邊距開啟，這樣當你調整視窗大小時，留白會按比例縮放
+opacity = 0.95                                            # 輕微透明度，增加現代感
+blur = true                                               # 在支援的環境下開啟背景模糊
 title = "Alacritty"
 class = { instance = "Alacritty", general = "Alacritty" }
 decorations = "none"
@@ -39,31 +39,31 @@ foreground = "#a9b1d6"
 [colors.cursor]
 text = "#1a1b26"
 #cursor = "#c0caf5"
-cursor = "#73daca"    # 亮綠色游標
+cursor = "#73daca" # 亮綠色游標
 
 [colors.selection]
 text = "CellForeground"
 background = "#283457"
 
 [colors.normal]
-black   = "#414868"
-red     = "#f7768e"
-green   = "#73daca"
-yellow  = "#e0af68"
-blue    = "#7aa2f7"
+black = "#414868"
+red = "#f7768e"
+green = "#73daca"
+yellow = "#e0af68"
+blue = "#7aa2f7"
 magenta = "#bb9af7"
-cyan    = "#7dcfff"
-white   = "#c0caf5"
+cyan = "#7dcfff"
+white = "#c0caf5"
 
 [colors.bright]
-black   = "#414868"
-red     = "#f7768e"
-green   = "#73daca"
-yellow  = "#e0af68"
-blue    = "#7aa2f7"
+black = "#414868"
+red = "#f7768e"
+green = "#73daca"
+yellow = "#e0af68"
+blue = "#7aa2f7"
 magenta = "#bb9af7"
-cyan    = "#7dcfff"
-white   = "#c0caf5"
+cyan = "#7dcfff"
+white = "#c0caf5"
 
 [colors]
 draw_bold_text_with_bright_colors = true
@@ -110,4 +110,4 @@ action = "Quit"
 
 [terminal.shell]
 program = "wsl"
-args = ["-d", "archlinux", "--cd", "~"]
+args = ["-d", "archlinux", "--cd", "~", "tmux -f ~/.config/tmux/tmux.conf"]

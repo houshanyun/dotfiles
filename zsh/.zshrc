@@ -113,7 +113,7 @@ export OPENAI_API_KEY=""
 
 # 1. 環境變數與路徑 (優先設定)
 export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
+unset LC_ALL
 export EDITOR='nvim'
 export COLORTERM=truecolor
 export TERM=xterm-256color
@@ -130,7 +130,7 @@ eval "$(~/.local/bin/mise activate zsh)"
 # 3. 初始化 Oh My Zsh (保留你需要的 git, web-search 等功能)
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="" # 因為你要用 Starship，這裡保持空白
-
+export STARSHIP_CONFIG=~/.config/starship/starship.toml
 
 # 只保留 OMZ 獨有、且 sheldon 沒管的插件
 plugins=(git web-search zsh-completions) 
@@ -148,18 +148,17 @@ alias ls='eza --icons --group-directories-first'
 alias la='eza -a --icons --group-directories-first'
 alias ll='eza -lgb --icons --git --group-directories-first'
 alias lt='eza --tree --icons'
-
-
+# alias tmux='tmux -f ~/.config/tmux/tmux.conf'
 # WSL 剪貼簿橋接
 if [ -n "$WAYLAND_DISPLAY" ]; then
     alias pbcopy='wl-copy'
     alias pbpaste='wl-paste'
 fi
 
-# 7. 其他邏輯 (Ghostty 自動開啟)
-if [ -z "$GHOSTTY_RESOURCES_DIR" ] && [ -n "$WT_SESSION" ]; then
-    exec ghostty
-fi
+# # 7. 其他邏輯 (Ghostty 自動開啟)
+# if [ -z "$GHOSTTY_RESOURCES_DIR" ] && [ -n "$WT_SESSION" ]; then
+#     exec ghostty
+# fi
 
 # 載入本地私有設定
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local

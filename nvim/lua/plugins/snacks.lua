@@ -165,18 +165,18 @@ return {
     -- ✅ / ❌ 模組開關
     -- =========================================================================
     bigfile   = { enabled = true },
-    explorer  = { enabled = true },
-    picker    = { enabled = true },
+    -- explorer  = { enabled = true },
+    -- picker    = { enabled = true },
     quickfile = { enabled = true },
-    words     = { enabled = true },
+    -- words     = { enabled = true },
     bufdelete = { enabled = true },
     gitbrowse = { enabled = true },
     lazygit   = { enabled = true },
     scratch   = { enabled = true },
-    terminal  = { enabled = true },
-    dim       = { enabled = true },
-    zen       = { enabled = true },
-    scroll    = { enabled = true },
+    -- terminal  = { enabled = true },
+    -- dim       = { enabled = true },
+    -- zen       = { enabled = true },
+    -- scroll    = { enabled = true },
 
     -- ❌ 停用（已有其他插件處理）
     indent    = { enabled = false }, -- 已有 mini.indentscope

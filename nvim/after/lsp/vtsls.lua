@@ -4,6 +4,7 @@ return {
       preferences = {
         includeCompletionsForModuleExports = true,
         includeCompletionsWithInsertText = true,
+        importModuleSpecifier = "non-relative",
       },
       suggest = {
         autoImports = true,

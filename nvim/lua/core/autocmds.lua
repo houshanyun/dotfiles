@@ -38,7 +38,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 -- 3. Yank 通知 + 高亮
 vim.api.nvim_create_autocmd("TextYankPost", {
   callback = function()
-    vim.highlight.on_yank({ higroup = "IncSearch", timeout = 150 })
+    vim.highlight.on_yank({ higroup = "IncSearch", timeout = 350 })
     local event = vim.v.event
     local count = #event.regcontents
     local msg = string.format("Yanked %d line%s", count, count > 1 and "s" or "")
