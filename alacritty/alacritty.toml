@@ -1,18 +1,19 @@
 # ==============================================================================
 # Alacritty Configuration - Solarized Osaka Theme
 # ==============================================================================
+[general]
+live_config_reload = true
 
 # [窗口設定]
 [window]
-padding = { x = 30, y = 10 }
-dynamic_padding = true                                    # 保持動態邊距開啟，這樣當你調整視窗大小時，留白會按比例縮放
+padding = { x = 10, y = 10 }
+dynamic_padding = false                                   # 保持動態邊距開啟，這樣當你調整視窗大小時，留白會按比例縮放
 opacity = 0.95                                            # 輕微透明度，增加現代感
 blur = true                                               # 在支援的環境下開啟背景模糊
 title = "Alacritty"
 class = { instance = "Alacritty", general = "Alacritty" }
 decorations = "none"
-dimensions = { columns = 120, lines = 30 }
-
+dimensions = { columns = 120, lines = 35 }
 # [字體設定]
 [font]
 normal = { family = "FiraCode Nerd Font Mono", style = "Medium" }
@@ -110,4 +111,4 @@ action = "Quit"
 
 [terminal.shell]
 program = "wsl"
-args = ["-d", "archlinux", "--cd", "~", "tmux -f ~/.config/tmux/tmux.conf"]
+args = ["-d", "archlinux", "--cd", "~", "tmux new-session -A -s main"]

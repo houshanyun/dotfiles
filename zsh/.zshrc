@@ -155,10 +155,9 @@ if [ -n "$WAYLAND_DISPLAY" ]; then
     alias pbpaste='wl-paste'
 fi
 
-# # 7. 其他邏輯 (Ghostty 自動開啟)
-# if [ -z "$GHOSTTY_RESOURCES_DIR" ] && [ -n "$WT_SESSION" ]; then
-#     exec ghostty
-# fi
 
+# if command -v tmux >/dev/null 2>&1 && [ -z "$TMUX" ]; then
+#   tmux attach -t main || tmux new -s main
+# fi
 # 載入本地私有設定
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local

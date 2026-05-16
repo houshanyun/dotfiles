@@ -6,7 +6,7 @@ format = """$character"""
 # --- 右側：隱形儀表板 ---
 # 你可以把想看的資訊（如路徑、Git、耗時）全部塞在這裡
 #right_format = """$directory$git_branch$cmd_duration"""
-right_format = """$directory$cmd_duration$status"""
+right_format = """$directory$git_branch$cmd_duration$status"""
 
 [status]
 disabled = false                     # 預設是關閉的，必須手動開啟
@@ -48,5 +48,5 @@ style = "bold #73daca"
 [character]
 # 僅保留一個不可見的空格，確保輸入位置不貼牆
 disabled = true
-success_symbol = "[󰁕](bold #73daca)"
-error_symbol = "[󰁕](bold #f7768e)"
+success_symbol = "[](bold #73daca)"
+error_symbol = "[](bold #f7768e)"

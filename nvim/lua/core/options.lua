@@ -10,8 +10,9 @@ vim.opt.fileencodings = "utf-8"
 vim.opt.laststatus = 3        -- 全局狀態欄：所有分割視窗共用同一個狀態欄 (適合 lualine)
 vim.opt.number = true         -- 顯示行號
 vim.opt.relativenumber = true -- 顯示相對行號 (便於快速跳轉)
+vim.opt.numberwidth = 4       -- 預設寬度，可根據需要調大
 vim.opt.cursorline = true     -- 高亮游標所在行
---vim.opt.signcolumn = "yes"    -- 始終顯示符號欄 (防止 LSP 提示圖示出現時畫面跳動)
+vim.opt.signcolumn = "yes"    -- 始終顯示符號欄 (防止 LSP 提示圖示出現時畫面跳動)
 vim.opt.scrolloff = 8         -- 垂直捲動時游標上下保留 8 行空間
 vim.opt.sidescrolloff = 8     -- 水平捲動時游標左右保留 8 字元空間
 vim.opt.wrap = false          -- 關閉自動換行
@@ -19,7 +20,9 @@ vim.opt.termguicolors = true  -- 開啟 24 位元真彩色支持
 vim.opt.showmatch = true      -- 輸入括號時，游標會短暫跳到對應的括號上
 vim.opt.matchtime = 2         -- 括號匹配跳轉顯示的時間 (單位: 0.1秒)
 --vim.opt.colorcolumn = "100"   -- 在第 100 字元處顯示垂直線 (提醒程式碼長度)
+vim.opt.foldcolumn = "0"
 
+vim.opt.statuscolumn = ""
 -- ================================================================================================
 -- 2. 操作行為與剪貼簿
 -- ================================================================================================

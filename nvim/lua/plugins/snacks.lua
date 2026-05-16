@@ -198,10 +198,10 @@ return {
         wo     = { winhighlight = "Normal:SnacksTerminal,FloatBorder:SnacksTerminalBorder" },
       },
       -- Zen 模式主視窗
-      zen = {
-        border = "none",
-        wo     = { winhighlight = "Normal:SnacksZen" },
-      },
+      -- zen = {
+      --   border = "none",
+      --   wo     = { winhighlight = "Normal:SnacksZen" },
+      -- },
       -- Picker（搜尋視窗）
       picker_input = {
         border = "rounded",
@@ -244,15 +244,15 @@ return {
     -- 📂 Explorer 側邊欄
     -- =========================================================================
     explorer  = {
-      enabled       = true,
-      replace_netrw = true,
+      enabled       = false,
+      replace_netrw = false,
     },
 
     -- =========================================================================
     -- 🌒 Dim（非作用域調暗）
     -- =========================================================================
     dim       = {
-      enabled = true,
+      enabled = false,
       scope   = {
         min_size = 5,
         max_size = 20,
@@ -265,7 +265,7 @@ return {
     -- 🧘 Zen 專注模式
     -- =========================================================================
     zen       = {
-      enabled = true,
+      enabled = false,
       toggles = {
         dim         = true,
         git_signs   = false,
@@ -299,14 +299,13 @@ return {
       preset   = {
         -- solarized-osaka 主題的 Neovim ASCII Logo
         header = [[
-
-      ████ ██████           █████      ██
-     ███████████             █████
-     █████████ ███████████████████ ███   ███████████
-    █████████  ███    █████████████ █████ ██████████████
-   █████████ ██████████ █████████ █████ █████ ████ █████
- ███████████ ███    ███ █████████ █████ █████ ████ █████
-██████  █████████████████████ ████ █████ █████ ████ ██████]],
+   _                                  _  _                _
+  | |       ___     __ __     ___    | \| |    __ __     (_)     _ __
+  | |__    / _ \    \ V /    / -_)   | .` |    \ V /     | |    | '  \
+  |____|   \___/    _\_/_    \___|   |_|\_|    _\_/_    _|_|_   |_|_|_|
+_|"""""| _|"""""| _|"""""| _|"""""| _|"""""| _|"""""| _|"""""| _|"""""|
+"`-0-0-' "`-0-0-' "`-0-0-' "`-0-0-' "`-0-0-' "`-0-0-' "`-0-0-' "`-0-0-'
+--]],
         keys = {
           { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.picker.files()" },
           { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.picker.recent()" },
@@ -371,7 +370,7 @@ return {
     { "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Config File" },
 
     -- 📂 側邊欄 Explorer（toggle）
-    { "<leader>e",  function() Snacks.explorer() end,                                       desc = "Toggle Explorer" },
+    -- { "<leader>e",  function() Snacks.explorer() end,                                       desc = "Toggle Explorer" },
 
     -- 🧠 LSP（取代 telescope lsp_*）
     { "gd",         function() Snacks.picker.lsp_definitions() end,                         desc = "Goto Definition" },
@@ -408,9 +407,9 @@ return {
     { "<Esc>",      "<C-\\><C-n>",                                                          desc = "Exit Terminal Mode",   mode = "t" },
 
     -- 🧘 Zen / Dim
-    { "<leader>z",  function() Snacks.zen() end,                                            desc = "Zen Mode" },
-    { "<leader>Z",  function() Snacks.zen.zoom() end,                                       desc = "Zoom" },
-    { "<leader>uD", function() Snacks.dim() end,                                            desc = "Toggle Dim" },
+    -- { "<leader>z",  function() Snacks.zen() end,                                            desc = "Zen Mode" },
+    -- { "<leader>Z",  function() Snacks.zen.zoom() end,                                       desc = "Zoom" },
+    -- { "<leader>uD", function() Snacks.dim() end,                                            desc = "Toggle Dim" },
 
     -- 📝 Scratch
     { "<leader>.",  function() Snacks.scratch() end,                                        desc = "Scratch Buffer" },
