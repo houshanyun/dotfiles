@@ -1,5 +1,6 @@
 # ~/.config/starship.toml (在 Windows 下路徑為 C:\Users\YourName\.config\starship.toml)
-
+# 禁用提示符上方自動加空行
+add_newline = false
 # --- 左側：絕對禪模式 ---
 format = """$character"""
 
@@ -48,5 +49,8 @@ style = "bold #73daca"
 [character]
 # 僅保留一個不可見的空格，確保輸入位置不貼牆
 disabled = true
-success_symbol = "[](bold #73daca)"
-error_symbol = "[](bold #f7768e)"
+#success_symbol = "[](bold #73daca)"
+#error_symbol = "[](bold #f7768e)"
+
+success_symbol = " "
+error_symbol = " "
